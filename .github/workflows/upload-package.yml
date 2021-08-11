@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        distrib: [raspbian/buster]
+        distrib: [debian/buster]
 
     steps:
       - name: Checkout
