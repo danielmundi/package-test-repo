@@ -15,10 +15,14 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Upload package
-        uses: danielmundi/upload-packagecloud@main
+        run: echo "Uploaded!"
+      
+      - uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          package-name: test-package.deb
-          packagecloud-username: wlanpi
-          packagecloud-repo: dev
-          packagecloud-distrib: ${{ matrix.distrib }}
-          packagecloud-token: ${{ secrets.PACKAGECLOUD_TOKEN }}
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Development Build"
+          files: |
+            *.deb
+            os.json
