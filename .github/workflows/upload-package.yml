@@ -21,6 +21,8 @@ jobs:
         run: |
           echo ref = ${{ github.event.ref }}
           echo default_branch = ${{ github.event.repository.default_branch }}
+          echo formatted_default = ${{ format('refs/heads/{0}', github.event.repository.default_branch) }}
+          echo are equal = ${{ github.event.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
       
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
